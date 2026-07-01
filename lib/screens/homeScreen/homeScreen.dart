@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:my_trip/screens/homeScreen/mobile_recharge/mobile_recharge.dart';
+import 'package:my_trip/screens/homeScreen/category/investment/investment_screen.dart';
+
+import 'category/mobile_recharge/mobile_recharge.dart';
+import 'discover_item/electrictiy/electricity_biller.dart';
+import 'discover_item/water/water_biller.dart';
+
+
 
 
 class HomePage extends StatefulWidget {
@@ -104,7 +110,9 @@ onTap: (){},
                   ),
                   _CategoryItem(
                     imagePath: "assets/images/investment.svg",
-                    onTap: (){},
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>InvestmentsScreen()));
+                    },
 
                     label: 'Investment',
 
@@ -255,22 +263,31 @@ onTap: (){},
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: const [
+                  children:  [
                     _DiscoverItem(
                              imagePath: "assets/images/water.svg",
                       label: 'Water',
+                      onTap:(){Navigator.push(context, MaterialPageRoute(builder: (context)=>WaterBillerScreen()));}
                     ),
                     _DiscoverItem(
                       imagePath: "assets/images/electricity.svg",
                       label: 'Electricity',
+                        onTap:(){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>ElectricityBiller()));
+                        }
+
                     ),
                     _DiscoverItem(
                       imagePath: "assets/images/internet.svg",
                       label: 'Internet',
+                        onTap:(){}
+
                     ),
                     _DiscoverItem(
                       imagePath: "assets/images/mobile_postpaid.svg",
                       label: 'Mobile\nPostpaid',
+                        onTap:(){}
+
                     ),
                   ],
                 ),
@@ -388,33 +405,38 @@ class _DiscoverItem extends StatelessWidget {
   const _DiscoverItem({
    required this.imagePath,
     required this.label,
+    required this.onTap
 
   });
   final String imagePath;
   final String label;
+  final VoidCallback onTap;
 
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-width: 72,
+    return InkWell(
+      onTap: onTap,
+      child: SizedBox(
+      width: 72,
 
-      child: Column(
-mainAxisSize: MainAxisSize.min,
-        children: [
-         SvgPicture.asset(imagePath,height: 30,width: 30),
-           SizedBox(height: 7),
-          Text(
-            label,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w500,
-              color: Color(0xFF1A1035),
-              height: 1.3,
+        child: Column(
+      mainAxisSize: MainAxisSize.min,
+          children: [
+           SvgPicture.asset(imagePath,height: 30,width: 30),
+             SizedBox(height: 7),
+            Text(
+              label,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+                color: Color(0xFF1A1035),
+                height: 1.3,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

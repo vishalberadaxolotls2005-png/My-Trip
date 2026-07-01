@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_trip/screens/homeScreen/mobile_recharge/recharges_plans.dart';
+import 'package:my_trip/screens/homeScreen/category/mobile_recharge/recharges_plans.dart';
+
+
 
 class MobileRechargeScreen extends StatelessWidget {
   MobileRechargeScreen({super.key});

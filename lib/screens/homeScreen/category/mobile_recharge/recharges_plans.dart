@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'mobile_recharge_bottomSheet.dart';
+
 class RechargePlansScreen extends StatefulWidget {
   const RechargePlansScreen({super.key});
 
@@ -234,7 +236,14 @@ class _RechargePlansScreenState extends State<RechargePlansScreen> {
                   const SizedBox(height: 10),
                   InkWell(
                     onTap: (){
-                      // Navigator.push(context, MaterialPageRoute(builder: (context)=>RechargePlansScreen()));
+
+                        showModalBottomSheet(
+                          context: context,
+                          isScrollControlled: true,
+                          backgroundColor: Colors.transparent,
+                          builder: (context) =>  MobileRechargeBottomSheet(),
+                        );
+
                     },
                     child: Container(
                       width: double.infinity,
@@ -459,7 +468,12 @@ class _PlanListCard extends StatelessWidget {
               ),
               InkWell(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>RechargePlansScreen()));
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    builder: (context) =>  MobileRechargeBottomSheet(),
+                  );
                 },
                 child: Container(
                   width: 65,
