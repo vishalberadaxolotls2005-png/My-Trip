@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:my_trip/screens/on_boarding/login_screen/login_screen.dart';
 
 import '../../bottom_nav/bottom_nav.dart';
-import '../../homeScreen/homeScreen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -66,31 +66,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   Text(
                     'Start Your Travel\nAdventure',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 24,
+                    style: GoogleFonts.poppins(
+                      fontSize: 25,
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
-                      height: 1.4,
+
                     ),
                   ),
                   SizedBox(height: 4),
                   Text(
                     'Create an account and discover\namazing destinations.',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       fontSize: 13.5,
+                      fontStyle: FontStyle.italic,
                       color: Colors.white.withOpacity(0.92),
-                      height: 1.5,
+
                     ),
                   ),
                   SizedBox(height: 20),
                   Text(
                     'Sign up',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 20,
+                    style: GoogleFonts.poppins(
+                      fontSize: 21,
                       color: Colors.white,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w500,
                       height: 1.5,
                     ),
                   ),
@@ -101,7 +102,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             Positioned(
               left: 0,
               right: 0,
-              bottom: 35,
+              bottom: 25,
               child: SizedBox(
                 height: 550,
                 child: Stack(
@@ -137,7 +138,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             //name
                             Text(
                               'Full Name',
-                              style: TextStyle(
+                              style: GoogleFonts.poppins(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
                                 color: Color(0xFF1A1035),
@@ -147,17 +148,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             TextField(
                               controller: _nameController,
                               keyboardType: TextInputType.name,
-                              style: const TextStyle(
+                              style:  GoogleFonts.poppins(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w400,
                                 color: Color(0xFF1A1035),
                               ),
-                              decoration: const InputDecoration(
+                              decoration:  InputDecoration(
                                 hintText: 'ex. Caroline hugo',
-                                hintStyle: TextStyle(
+                                hintStyle: GoogleFonts.poppins(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xFFB8B8B8),
+                                  color: Color(0xff717680),
                                 ),
                                 contentPadding: EdgeInsets.symmetric(
                                   horizontal: 16,
@@ -190,7 +191,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             // Phone Number
                             Text(
                               'Phone Number',
-                              style: TextStyle(
+                              style:  GoogleFonts.poppins(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
                                 color: Color(0xFF1A1035),
@@ -207,10 +208,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               ),
                               decoration: InputDecoration(
                                 hintText: '+91  Enter phone number',
-                                hintStyle: TextStyle(
+                                hintStyle:  GoogleFonts.poppins(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xFFB8B8B8),
+                                  color: Color(0xff717680),
                                 ),
                                 contentPadding: EdgeInsets.symmetric(
                                   horizontal: 16,
@@ -244,7 +245,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             Center(
                               child: Text(
                                 'Or',
-                                style: TextStyle(
+                                style:  GoogleFonts.poppins(
                                   fontSize: 13.5,
                                   fontWeight: FontWeight.w500,
                                   color: Colors.black,
@@ -279,7 +280,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     SizedBox(width: 10),
                                     Text(
                                       'Sign Up with Google',
-                                      style: TextStyle(
+                                      style:  GoogleFonts.poppins(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
                                         color: Color(0xFF1A1035),
@@ -312,14 +313,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       Color(0xffB458EC),
                                     ],
                                   ),
-                                  borderRadius: BorderRadius.circular(14),
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
                                 alignment: Alignment.center,
-                                child: const Text(
+                                child:  Text(
                                   'Continue',
-                                  style: TextStyle(
+                                  style:  GoogleFonts.poppins(
                                     fontSize: 16.5,
-                                    fontWeight: FontWeight.w700,
+                                    fontWeight: FontWeight.w500,
                                     color: Colors.white,
                                     letterSpacing: 0.5,
                                   ),
@@ -333,9 +334,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Text(
+                                 Text(
                                   'Already have an account? ',
-                                  style: TextStyle(
+                                  style:  GoogleFonts.poppins(
                                     fontSize: 13.5,
                                     fontWeight: FontWeight.w400,
                                     color: Color(0xFF666666),
@@ -346,9 +347,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   onTap: () {
                                     Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
                                   },
-                                  child: const Text(
+                                  child:  Text(
                                     'Login',
-                                    style: TextStyle(
+                                    style:  GoogleFonts.poppins(
                                       fontSize: 13.5,
                                       fontWeight: FontWeight.w600,
                                       color: Color(0xff9D55E3),

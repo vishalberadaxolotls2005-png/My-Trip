@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:my_trip/screens/homeScreen/homeScreen.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:my_trip/screens/on_boarding/signUp_screen/signUp_screen.dart';
 
 import '../../bottom_nav/bottom_nav.dart';
@@ -65,8 +65,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   Text(
                     'Welcome Back',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 24,
+                    style: GoogleFonts.poppins(
+                      fontSize: 25,
                       fontWeight: FontWeight.w600,
                       color: Colors.white,
                       height: 1.4,
@@ -76,8 +76,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   Text(
                     'Login to continue planning your\njourney.',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       fontSize: 13.5,
+                      fontStyle: FontStyle.italic,
                       color: Colors.white.withOpacity(0.92),
                       height: 1.5,
                     ),
@@ -86,10 +87,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   Text(
                     'Login',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 20,
+                    style:GoogleFonts.poppins(
+                      fontSize: 21,
                       color: Colors.white,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w500,
                       height: 1.5,
                     ),
                   ),
@@ -100,7 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Positioned(
               left: 0,
               right: 0,
-              bottom: 35,
+              bottom: 40,
               child: SizedBox(
                 height: 550,
                 child: Stack(
@@ -112,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           horizontal: 17,
                         ),
                         child: Image.asset(
-                          "assets/images/loginCard.png",
+                          "assets/images/login.png",
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -138,10 +139,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             // Phone Number
                             Text(
                               'Phone Number',
-                              style: TextStyle(
-                                fontSize: 14,
+                              style: GoogleFonts.poppins(
+                                fontSize: 15,
                                 fontWeight: FontWeight.w600,
-                                color: Color(0xFF1A1035),
+                                color: Color(0xff2E2F30),
                               ),
                             ),
                             SizedBox(height: 8),
@@ -155,10 +156,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               decoration: InputDecoration(
                                 hintText: '+91  Enter phone number',
-                                hintStyle: TextStyle(
-                                  fontSize: 14,
+                                hintStyle: GoogleFonts.poppins(
+                                  fontSize: 15,
                                   fontWeight: FontWeight.w400,
-                                  color: Color(0xFFB8B8B8),
+                                  color: Color(0xff717680),
                                 ),
                                 contentPadding: EdgeInsets.symmetric(
                                   horizontal: 16,
@@ -192,9 +193,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             Center(
                               child: Text(
                                 'Or',
-                                style: TextStyle(
-                                  fontSize: 13.5,
-                                  fontWeight: FontWeight.w500,
+                                style: GoogleFonts.poppins(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
                                   color: Colors.black,
                                 ),
                               ),
@@ -227,7 +228,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     SizedBox(width: 10),
                                     Text(
                                       'Login with Google',
-                                      style: TextStyle(
+                                      style: GoogleFonts.poppins(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
                                         color: Color(0xFF1A1035),
@@ -264,9 +265,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 alignment: Alignment.center,
                                 child:  Text(
                                   'Continue',
-                                  style: TextStyle(
-                                    fontSize: 16.5,
-                                    fontWeight: FontWeight.w700,
+                                  style: GoogleFonts.poppins(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w500,
                                     color: Colors.white,
                                     letterSpacing: 0.5,
                                   ),
@@ -282,7 +283,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               children: [
                                  Text(
                                   "Don't have an account?" ,
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                     fontSize: 13.5,
                                     fontWeight: FontWeight.w400,
                                     color: Color(0xFF666666),
@@ -295,7 +296,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   },
                                   child:  Text(
                                     'Sign Up',
-                                    style: TextStyle(
+                                    style: GoogleFonts.poppins(
                                       fontSize: 13.5,
                                       fontWeight: FontWeight.w600,
                                       color: Color(0xff9D55E3),

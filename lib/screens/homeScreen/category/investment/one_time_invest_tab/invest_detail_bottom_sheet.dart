@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 
 
@@ -41,9 +42,9 @@ class _InvestmentDetailsBottomSheetState
                     children: [
                       const Divider(color: Color(0xff707070), height: 1),
                       const SizedBox(height: 5),
-                      const Text(
+                       Text(
                         'Earn returns on your investment.',
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                           fontSize: 13,
                           color: Color(0xFF9B9BAB),
                           fontWeight: FontWeight.w500,
@@ -83,9 +84,9 @@ class _InvestmentDetailsBottomSheetState
                       const Divider(color: Color(0xff707070), height: 1),
                       const SizedBox(height: 8),
 
-                      const Text(
+                       Text(
                         'Select Payment Method',
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                           fontSize: 13,
                           color: Color(0xFF9B9BAB),
                           fontWeight: FontWeight.w500,
@@ -144,7 +145,7 @@ class _InvestmentDetailsBottomSheetState
                           child: Center(
                             child: Text(
                               "Confirm Investment",
-                              style: TextStyle(
+                              style: GoogleFonts.poppins(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 15,
@@ -173,13 +174,13 @@ class _InvestmentDetailsBottomSheetState
             onTap: () => Navigator.of(context).pop(),
             child: const Icon(Icons.close, color: Color(0xFF1A1A2E), size: 22),
           ),
-          const Expanded(
+           Expanded(
             child: Center(
               child: Padding(
                 padding: EdgeInsets.only(right: 24),
                 child: Text(
                   'Investment Details',
-                  style: TextStyle(
+                  style: GoogleFonts.poppins(
                     fontSize: 16,
                     fontWeight: FontWeight.w700,
                     color: Color(0xFF1A1A2E),
@@ -199,7 +200,7 @@ class _InvestmentDetailsBottomSheetState
       children: [
         Text(
           label,
-          style: const TextStyle(
+          style:GoogleFonts.poppins(
             fontSize: 14,
             color: Color(0xFF1A1A2E),
             fontWeight: FontWeight.w500,
@@ -207,7 +208,7 @@ class _InvestmentDetailsBottomSheetState
         ),
         Text(
           value,
-          style: const TextStyle(
+          style: GoogleFonts.poppins(
             fontSize: 14,
             color: Color(0xFF1A1A2E),
             fontWeight: FontWeight.w800,
@@ -217,79 +218,7 @@ class _InvestmentDetailsBottomSheetState
     );
   }
 
-  Widget _buildPaymentOption({
-    required IconData icon,
-    required Color iconColor,
-    required String label,
-    required int index,
-    bool isUpi = false,
-  }) {
-    final selected = _selectedMethod == index;
-    return GestureDetector(
-      onTap: () => setState(() => _selectedMethod = index),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-        decoration: BoxDecoration(
-          color: selected ? const Color(0xFFF3EEFE) : Colors.white,
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(
-            color: selected ? const Color(0xFF8B4DFF) : const Color(0xFFE8E8EF),
-            width: selected ? 1.5 : 1,
-          ),
-        ),
-        child: Row(
-          children: [
-            isUpi
-                ? const Text(
-              'UPI',
-              style: TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w800,
-                fontStyle: FontStyle.italic,
-                color: Color(0xFFFF6600),
-              ),
-            )
-                : Icon(icon, color: iconColor, size: 22),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Text(
-                label,
-                style: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xFF1A1A2E),
-                ),
-              ),
-            ),
-            Container(
-              width: 22,
-              height: 22,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: selected
-                      ? const Color(0xFF8B4DFF)
-                      : const Color(0xFFD8D8E0),
-                  width: 2,
-                ),
-              ),
-              alignment: Alignment.center,
-              child: selected
-                  ? Container(
-                width: 10,
-                height: 10,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Color(0xFF8B4DFF),
-                ),
-              )
-                  : null,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+
 
 }
 
@@ -350,7 +279,7 @@ class _PaymentOptionTile extends StatelessWidget {
             Expanded(
               child: Text(
                 label,
-                style: const TextStyle(
+                style:GoogleFonts.poppins(
                   fontSize: 15,
                   fontWeight: FontWeight.w500,
                   color: Color(0xFF1A1A2E),

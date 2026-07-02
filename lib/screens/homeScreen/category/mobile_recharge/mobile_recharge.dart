@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:my_trip/screens/homeScreen/category/mobile_recharge/recharges_plans.dart';
 
 
@@ -37,54 +39,67 @@ class MobileRechargeScreen extends StatelessWidget {
             size: 17,
           ),
         ),
-        title: const Text(
+        title:  Text(
           "Mobile Recharge",
-          style: TextStyle(
+          style: GoogleFonts.poppins(
             color: Colors.black,
             fontWeight: FontWeight.w600,
             fontSize: 16,
           ),
         ),
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(75),
+          preferredSize: Size.fromHeight(70),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
-            child: TextFormField(
-              controller: phoneController,
-              keyboardType: TextInputType.phone,
+            child: Container(
+              width: double.infinity,
 
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w700,
-                color: Color(0xff2E2E2E),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+              decoration: BoxDecoration(
+                  color: const Color(0xffF6F6F6),
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                      color: Color(0xffC7C7C7)
+                  )
               ),
-              decoration: InputDecoration(
-                labelText: "Mobile Number",
-                hintText: "+91 123465678",
-                floatingLabelBehavior: FloatingLabelBehavior.always,
-                labelStyle: const TextStyle(
-                  fontSize: 14,
-                  color: Color(0xff707070),
-                  fontWeight: FontWeight.w500,
-                ),
-                filled: true,
-                fillColor: const Color(0xffF7F7F7),
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 14,
-                  vertical: 18,
-                ),
-
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: Colors.grey.shade300),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: const BorderSide(
-                    color: Color(0xff8B5CF6),
-                    width: 1.3,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Mobile Number",
+                    style: GoogleFonts.poppins(
+                      fontSize: 12,
+                      color: Color(0xFF707070),
+                      fontWeight: FontWeight.w800,
+                    ),
                   ),
-                ),
+
+                  TextField(
+                    controller: phoneController,
+                    keyboardType: TextInputType.phone,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly
+                    ],
+                    style:  GoogleFonts.poppins(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
+                    ),
+                    decoration:  InputDecoration(
+                      isDense: true,
+                      border: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      enabledBorder: InputBorder.none,
+                      contentPadding: EdgeInsets.zero,
+                      hintText: '+91 2351478963',
+                      hintStyle: GoogleFonts.poppins(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w800,
+                        color: Color(0xff1B1A1A),
+                      ),
+                    ),
+                  )
+                ],
               ),
             ),
           ),
@@ -95,11 +110,11 @@ class MobileRechargeScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
           children: [
             // Your Recent Recharges
-            const Text(
+             Text(
               'Your Recent Recharges',
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                 fontSize: 16,
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.w600,
                 color: Color(0xFF1A1A1A),
               ),
             ),
@@ -115,9 +130,9 @@ class MobileRechargeScreen extends StatelessWidget {
                     children: [
                       OperatorLogo(operatorName: recentOperators[i], size: 48),
                       const SizedBox(height: 6),
-                      const Text(
+                       Text(
                         '1312367566',
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                           fontSize: 10,
                           color: Color(0xFF6B6B70),
                         ),
@@ -130,11 +145,11 @@ class MobileRechargeScreen extends StatelessWidget {
             const SizedBox(height: 15),
 
             // Your Contacts
-            const Text(
+             Text(
               'Your Contacts',
-              style: TextStyle(
-                fontSize: 17,
-                fontWeight: FontWeight.w700,
+              style: GoogleFonts.poppins(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
                 color: Color(0xFF1A1A1A),
               ),
             ),
@@ -172,7 +187,7 @@ class MobileRechargeScreen extends StatelessWidget {
                 child: Center(
                   child: Text(
                     "Continue",
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       color: Colors.white,
                       fontWeight: FontWeight.w500,
                       fontSize: 15,
@@ -219,16 +234,16 @@ class ContactCard extends StatelessWidget {
             children: [
               Text(
                 name,
-                style: const TextStyle(
+                style:  GoogleFonts.poppins(
                   fontSize: 15,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w600,
                   color: Color(0xFF1A1A1A),
                 ),
               ),
 
               Text(
                 number,
-                style: const TextStyle(fontSize: 12, color: Color(0xFF8A8A8E)),
+                style:  GoogleFonts.poppins(fontSize: 12, color: Color(0xFF8A8A8E)),
               ),
             ],
           ),

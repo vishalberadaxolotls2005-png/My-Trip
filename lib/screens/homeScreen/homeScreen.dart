@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:my_trip/screens/homeScreen/category/investment/investment_screen.dart';
 
 import 'category/mobile_recharge/mobile_recharge.dart';
@@ -49,15 +50,15 @@ class _HomePageState extends State<HomePage> {
                            SizedBox(width: 14),
                            Icon(
                             Icons.search_rounded,
-                            color: Color(0xFFAAAAAA),
+                            color: Color(0xff707070),
                             size: 20,
                           ),
                            SizedBox(width: 8),
                            Text(
                             'ex. Flights',
-                            style: TextStyle(
+                            style: GoogleFonts.poppins(
                               fontSize: 14,
-                              color: Color(0xFFBBBBBB),
+                              color: Color(0xff707070),
                               fontWeight: FontWeight.w400,
                             ),
                           ),
@@ -140,7 +141,7 @@ onTap: (){},
                 children: [
                    Text(
                     'Offers',
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       fontSize: 17,
                       fontWeight: FontWeight.w700,
                       color: Color(0xFF1A1035),
@@ -150,7 +151,7 @@ onTap: (){},
                     onTap: () {},
                     child:  Text(
                       'View All',
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
                         color: Color(0xff7750D5),
@@ -203,7 +204,7 @@ onTap: (){},
                       ),
                       child: Text(
                         _tabs[index],
-                        style: TextStyle(
+                        style: GoogleFonts.poppins(
                           fontSize: 13,
                           fontWeight: selected
                               ? FontWeight.w700
@@ -241,7 +242,7 @@ onTap: (){},
               padding:  EdgeInsets.symmetric(horizontal: 16),
               child:  Text(
                 'Discover more',
-                style: TextStyle(
+                style: GoogleFonts.poppins(
                   fontSize: 17,
                   fontWeight: FontWeight.w700,
                   color: Color(0xFF1A1035),
@@ -341,7 +342,7 @@ VoidCallback onTap;
             Text(
               label,
               textAlign: TextAlign.center,
-              style: const TextStyle(
+              style:  GoogleFonts.poppins(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
                 color: Color(0xFF1A1035),
@@ -387,7 +388,7 @@ class _OfferCard extends StatelessWidget {
             image: DecorationImage(image: AssetImage("assets/images/discount.png",),fit: BoxFit.cover)
           ),
               child:Center(
-                child: Text(discount,style: TextStyle(
+                child: Text(discount,style: GoogleFonts.poppins(
                   fontSize: 15,
                   fontWeight: FontWeight.w700,
                   color: Colors.white,
@@ -428,7 +429,7 @@ class _DiscoverItem extends StatelessWidget {
             Text(
               label,
               textAlign: TextAlign.center,
-              style: const TextStyle(
+              style:  GoogleFonts.poppins(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
                 color: Color(0xFF1A1035),
@@ -453,7 +454,7 @@ class PlaceholderPage extends StatelessWidget {
     return Center(
       child: Text(
         label,
-        style: const TextStyle(
+        style:  GoogleFonts.poppins(
           fontSize: 22,
           fontWeight: FontWeight.w700,
           color: Color(0xFF7C3AED),
@@ -541,7 +542,7 @@ class Where2GoCard extends StatelessWidget {
                               children: [
                                 Text(
                                   'Kerala',
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                     fontSize: 22,
                                     fontWeight: FontWeight.w800,
                                     color: Colors.white,
@@ -557,7 +558,7 @@ class Where2GoCard extends StatelessWidget {
                                 SizedBox(height: 5),
                                 Text(
                                   "Kerala, also known as 'God's Own Country' ,It is a beautiful and prosperous state located on the coast of the Arabian Sea in the south-west of India.",
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                     fontSize: 11,
                                     fontWeight: FontWeight.w400,
                                     color: Colors.white,
@@ -598,7 +599,7 @@ class Where2GoCard extends StatelessWidget {
                               ),
                               child:  Text(
                                 'Book now',
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w700,
                                   color: Color(0xFF1A1035),
@@ -658,9 +659,9 @@ class _SwipeSliderState extends State<SwipeSlider> {
           ),
         ),
         const SizedBox(height: 2),
-        const Text(
+         Text(
           '- - - - - - - - - Swipe to view all - - - - - - - - -',
-          style: TextStyle(
+          style: GoogleFonts.poppins(
             fontSize: 11,
             color: Color(0xFFAAAAAA),
             letterSpacing: 0.4,

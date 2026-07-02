@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:my_trip/screens/bottom_nav/profile_nav/bank_details/bank-details.dart';
 import 'package:my_trip/screens/bottom_nav/profile_nav/help_support/help_support.dart';
 import 'package:my_trip/screens/bottom_nav/profile_nav/my_booking/my_booking.dart';
@@ -37,7 +38,7 @@ class ProfileScreen extends StatelessWidget {
         ),
         title: Text(
           "Profile",
-          style: TextStyle(
+          style: GoogleFonts.poppins(
             fontSize: 16,
             fontWeight: FontWeight.w600,
             color: Colors.black,
@@ -98,7 +99,7 @@ class ProfileScreen extends StatelessWidget {
 
             Text(
               "Sarah Smith",
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                 fontWeight: FontWeight.w600,
                 fontSize: 18,
                 color: const Color(0xff2E2E2E),
@@ -169,7 +170,7 @@ class ProfileScreen extends StatelessWidget {
                                 ),
                                 child: Text(
                                   menuItems[index],
-                                  style: TextStyle(
+                                  style: GoogleFonts.poppins(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500,
                                     color: const Color(0xff2C2C2C),
@@ -200,7 +201,7 @@ class ProfileScreen extends StatelessWidget {
                       child: Center(
                         child: Text(
                           "Log Out",
-                          style: TextStyle(
+                          style: GoogleFonts.poppins(
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
                             fontSize: 15,
