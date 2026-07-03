@@ -2,7 +2,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:my_trip/screens/bottom_nav/my_trip/my_trip_screen.dart';
 import 'package:my_trip/screens/bottom_nav/profile_nav/profile_screen.dart';
+import 'package:my_trip/screens/bottom_nav/search_nav/search_screen.dart';
 import 'package:my_trip/screens/bottom_nav/wallet_nav/wallet_screen.dart';
 
 import '../homeScreen/homeScreen.dart';
@@ -18,8 +20,8 @@ class _MainScreenState extends State<MainScreen> {
 
   final List<Widget> _pages = [
      HomePage(),
-     PlaceholderPage(label: 'My Trip'),
-     PlaceholderPage(label: 'Search'),
+     MyTripScreen(),
+     SearchScreen(),
     ProfileScreen(),
      WalletScreen()
   ];
