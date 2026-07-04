@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_trip/screens/bottom_nav/profile_nav/notification_setting/notification_setting.dart';
+import 'package:my_trip/screens/homeScreen/category/hotels/hotel_homestay_screen.dart';
 import 'package:my_trip/screens/homeScreen/category/investment/investment_screen.dart';
+import 'package:my_trip/screens/homeScreen/notification_screen.dart';
 
 import 'category/mobile_recharge/mobile_recharge.dart';
 import 'discover_item/electrictiy/electricity_biller.dart';
@@ -68,22 +71,27 @@ class _HomePageState extends State<HomePage> {
                   ),
                    SizedBox(width: 10),
                   // Notification icon button
-                  Container(
-                    width: 48,
-                    height: 48,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color:  Color(0xff6986F2),
+                  InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>NotificationScreen()));
+                    },
+                    child: Container(
+                      width: 48,
+                      height: 48,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color:  Color(0xff6986F2),
+
+                        ),
+                        color: Colors.white,
 
                       ),
-                      color: Colors.white,
-
-                    ),
-                    child:  Icon(
-                      Icons.notifications_none_rounded,
-                      color: Color(0xff6986F2),
-                      size: 22,
+                      child:  Icon(
+                        Icons.notifications_none_rounded,
+                        color: Color(0xff6986F2),
+                        size: 22,
+                      ),
                     ),
                   ),
                 ],
@@ -100,12 +108,15 @@ class _HomePageState extends State<HomePage> {
                   _CategoryItem(
                    imagePath: "assets/images/flights.svg",
                     label: 'Flights',
-onTap: (){
+                    onTap: (){
 },
                   ),
                   _CategoryItem(
                     imagePath: "assets/images/hotels.svg",
-onTap: (){},
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>HotelHomestayScreen()));
+
+                    },
                     label: 'Hotels',
 
                   ),

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'all_tab/all_trip_details.dart';
+import 'all_trip_details.dart';
 import 'all_tab/all_trip_tab.dart';
 import 'cancelled_tab/cancelled_trip_tab.dart';
 import 'completed_tab/completed_trip_tab.dart';
+import 'trip_model.dart'; // adjust path to wherever you saved Trip
 
 class MyTripScreen extends StatefulWidget {
   const MyTripScreen({super.key});
@@ -15,7 +16,8 @@ class MyTripScreen extends StatefulWidget {
 class _MyTripScreenState extends State<MyTripScreen>
     with SingleTickerProviderStateMixin {
   late final TabController _tabController;
-bool _showDetails = false;
+  Trip? _selectedTrip;
+
   static const Color tabSelectedBg = Color(0xFFF9F0FD);
   static const Color tabSelectedText = Color(0xFF7750D5);
   static const Color tabUnselectedText = Color(0xff1B1A1A);
@@ -36,12 +38,13 @@ bool _showDetails = false;
     _tabController.dispose();
     super.dispose();
   }
-  void _openDetails() {
-    setState(() => _showDetails = true);
+
+  void _openDetails(Trip trip) {
+    setState(() => _selectedTrip = trip);
   }
 
   void _closeDetails() {
-    setState(() => _showDetails = false);
+    setState(() => _selectedTrip = null);
   }
 
   @override
@@ -82,18 +85,17 @@ bool _showDetails = false;
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: const Color(0xffC7C7C7)),
               ),
-
               child: Row(
                 children: List.generate(_labels.length, (index) {
                   final isSelected = _tabController.index == index;
                   return Expanded(
                     child: GestureDetector(
-                      behavior: HitTestBehavior.opaque, // FIX: makes the whole cell tappable, not just the text
+                      behavior: HitTestBehavior.opaque,
                       onTap: () {
                         _tabController.animateTo(index);
                       },
                       child: AnimatedContainer(
-                        duration:  Duration.zero,
+                        duration: Duration.zero,
                         padding: const EdgeInsets.symmetric(vertical: 10),
                         decoration: BoxDecoration(
                           color: isSelected ? tabSelectedBg : Colors.transparent,
@@ -124,8 +126,8 @@ bool _showDetails = false;
       body: Column(
         children: [
           Expanded(
-            child: _showDetails
-                ? TripDetailsScreen(onBack: _closeDetails)
+            child: _selectedTrip != null
+                ? TripDetailsScreen(trip: _selectedTrip!, onBack: _closeDetails)
                 : TabBarView(
               controller: _tabController,
               children: [

@@ -1,33 +1,93 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../trip_model.dart'; // adjust path to wherever you saved trip_model.dart
 
 class CompletedTripsTab extends StatelessWidget {
-  final VoidCallback onViewDetails;
+  final void Function(Trip trip) onViewDetails;
   const CompletedTripsTab({super.key, required this.onViewDetails});
+
   // Mock data - replace with real completed trips from your API / database.
-  static const List<_Trip> _trips = [
-    _Trip(
-      status: 'Completed',
+  static const List<Trip> _trips = [
+    Trip(
+      status: TripStatus.completed,
       statusColor: Color(0xFF12B76A),
-      date: 'Date 06 Jun 26',
       route: 'Delhi - Goa',
       flight: 'DEL - GOX',
       hotel: 'Taj Exotica Resort',
       buttonLabel: 'View Details',
       imgPath: "assets/images/completed_trip.svg",
       imgPathTittle: "assets/images/completed_title.svg",
+      tripDateRange: 'Date 06 Jun 26',
+      progressStartDate: '01 Jun',
+      progressEndDate: '06 Jun',
+      progressPercent: 1.0,
+      hotelName: '7 Apple Hotel, Aurangabad',
+      hotelAddress: 'Chhatrapati Sambhaji Maharaj, New Delhi',
+      hotelRating: '2.5K',
+      checkInDate: '01 Jun',
+      checkInDay: '26, Thu',
+      checkInTime: '2PM',
+      checkOutDate: '06 Jun',
+      checkOutDay: '26, Thu',
+      checkOutTime: '2PM',
+      nights: '5 NIGHTS',
+      guestsRooms: '2 Adults - 1 Room',
+      airline: 'IndiGo',
+      flightNumber: 'AI 1843 | Airbus A320 N',
+      originCode: 'IXU',
+      destinationCode: 'DEL',
+      departureTime: '21:20',
+      departureDate: '19 Jun, Fri',
+      departureCity: 'Chhatrapati Sambhajinagar',
+      arrivalTime: '23:25',
+      arrivalDate: '19 Jun, Fri',
+      arrivalCity: 'New Delhi',
+      arrivalTerminal: 'DEL, Terminal T2',
+      flightDuration: '2h 5m',
+      stopsLabel: 'Non stop',
+      passengerName: 'Sarah Smith',
+      seatNo: '16A',
     ),
-    _Trip(
-      status: 'Completed',
+    Trip(
+      status: TripStatus.completed,
       statusColor: Color(0xFF12B76A),
-      date: 'Date 06 Jun 26',
       route: 'Delhi - Goa',
       flight: 'DEL - GOX',
       hotel: 'Taj Exotica Resort',
       buttonLabel: 'View Details',
       imgPath: "assets/images/completed_trip.svg",
       imgPathTittle: "assets/images/completed_title.svg",
+      tripDateRange: 'Date 06 Jun 26',
+      progressStartDate: '01 Jun',
+      progressEndDate: '06 Jun',
+      progressPercent: 1.0,
+      hotelName: '7 Apple Hotel, Aurangabad',
+      hotelAddress: 'Chhatrapati Sambhaji Maharaj, New Delhi',
+      hotelRating: '2.5K',
+      checkInDate: '01 Jun',
+      checkInDay: '26, Thu',
+      checkInTime: '2PM',
+      checkOutDate: '06 Jun',
+      checkOutDay: '26, Thu',
+      checkOutTime: '2PM',
+      nights: '5 NIGHTS',
+      guestsRooms: '2 Adults - 1 Room',
+      airline: 'IndiGo',
+      flightNumber: 'AI 1843 | Airbus A320 N',
+      originCode: 'IXU',
+      destinationCode: 'DEL',
+      departureTime: '21:20',
+      departureDate: '19 Jun, Fri',
+      departureCity: 'Chhatrapati Sambhajinagar',
+      arrivalTime: '23:25',
+      arrivalDate: '19 Jun, Fri',
+      arrivalCity: 'New Delhi',
+      arrivalTerminal: 'DEL, Terminal T2',
+      flightDuration: '2h 5m',
+      stopsLabel: 'Non stop',
+      passengerName: 'Sarah Smith',
+      seatNo: '16A',
     ),
   ];
 
@@ -36,40 +96,20 @@ class CompletedTripsTab extends StatelessWidget {
     return ListView.builder(
       padding: const EdgeInsets.only(top: 7, bottom: 20),
       itemCount: _trips.length,
-      itemBuilder: (context, index) => _CompletedTripCard(trip: _trips[index], onViewDetails: onViewDetails, ),
+      itemBuilder: (context, index) => _CompletedTripCard(
+        trip: _trips[index],
+        onViewDetails: onViewDetails,
+      ),
     );
   }
 }
 
-class _Trip {
-  final String status;
-  final Color statusColor;
-  final String date;
-  final String route;
-  final String flight;
-  final String hotel;
-  final String buttonLabel;
-  final String imgPath;
-  final String imgPathTittle;
-
-  const _Trip({
-    required this.status,
-    required this.statusColor,
-    required this.date,
-    required this.route,
-    required this.flight,
-    required this.hotel,
-    required this.buttonLabel,
-    required this.imgPath,
-    required this.imgPathTittle,
-  });
-}
-
 /// Custom card widget used only inside the "Completed" tab.
 class _CompletedTripCard extends StatelessWidget {
-  final _Trip trip;
-  final VoidCallback onViewDetails;
+  final Trip trip;
+  final void Function(Trip trip) onViewDetails;
   const _CompletedTripCard({required this.trip, required this.onViewDetails});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -108,7 +148,7 @@ class _CompletedTripCard extends StatelessWidget {
                     ),
                     const SizedBox(width: 6),
                     Text(
-                      trip.status,
+                      trip.statusLabel,
                       style: GoogleFonts.poppins(
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
@@ -118,7 +158,7 @@ class _CompletedTripCard extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  trip.date,
+                  trip.tripDateRange,
                   style: GoogleFonts.poppins(
                     fontSize: 12,
                     fontWeight: FontWeight.w500,
@@ -164,9 +204,7 @@ class _CompletedTripCard extends StatelessWidget {
           ),
           // button
           InkWell(
-            onTap: () {
-              onViewDetails();
-            },
+            onTap: () => onViewDetails(trip),
             child: Container(
               margin: const EdgeInsets.only(bottom: 10, right: 14, left: 14),
               width: double.infinity,
