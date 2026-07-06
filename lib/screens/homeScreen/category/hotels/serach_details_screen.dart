@@ -355,7 +355,7 @@ class _HotelCardState extends State<_HotelCard> {
                   ),
                   InkWell(
                     onTap: () {
-                      
+
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>HotelDetailsScreen()));
                     },
                     borderRadius: BorderRadius.circular(8),

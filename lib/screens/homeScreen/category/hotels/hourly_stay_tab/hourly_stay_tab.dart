@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../by_night_tab/by_night_tab.dart';
 import '../room_bottom_sheet.dart';
+import '../serach_details_screen.dart';
 
 class HourlyStayTab extends StatefulWidget {
 
@@ -311,7 +312,7 @@ class _HourlyStayTabState extends State<HourlyStayTab> {
                   // ---------- Search button ----------
                   InkWell(
                     onTap: () {
-
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>SerachDetailsScreen()));
 
                     },
                     child: Container(
