@@ -6,6 +6,7 @@ import 'package:my_trip/screens/homeScreen/category/hotels/hotel_homestay_screen
 import 'package:my_trip/screens/homeScreen/category/investment/investment_screen.dart';
 import 'package:my_trip/screens/homeScreen/notification_screen.dart';
 
+import 'category/flights/flight_screen.dart';
 import 'category/mobile_recharge/mobile_recharge.dart';
 import 'discover_item/electrictiy/electricity_biller.dart';
 import 'discover_item/water/water_biller.dart';
@@ -109,6 +110,7 @@ class _HomePageState extends State<HomePage> {
                    imagePath: "assets/images/flights.svg",
                     label: 'Flights',
                     onTap: (){
+                     Navigator.push(context, MaterialPageRoute(builder: (context)=>FlightScreen()));
 },
                   ),
                   _CategoryItem(
