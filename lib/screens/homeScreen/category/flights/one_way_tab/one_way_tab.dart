@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_trip/screens/homeScreen/category/flights/one_way_tab/flight_result_screen.dart';
+import 'package:my_trip/screens/homeScreen/category/flights/one_way_tab/travelingFrom_Bottom_sheet.dart';
 import 'package:my_trip/screens/homeScreen/category/hotels/serach_details_screen.dart';
 
 
@@ -83,20 +85,40 @@ class _OneWayTabState extends State<OneWayTab> {
                   Row(
                     children: [
                       Expanded(
-                        child: _locationCard(
-                          heading: "FROM",
-                          title: "Chhatrapati Sambh..",
-                          subtitle: "IXU – Chhatrapati Sambh...",
+                        child: InkWell(
+                          onTap: (){
+                            showModalBottomSheet(
+                              context: context,
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              builder: (context) => const TravellingFromBottomSheet(),
+                            );
+                          },
+                          child: _locationCard(
+                            heading: "FROM",
+                            title: "Chhatrapati Sambh..",
+                            subtitle: "IXU – Chhatrapati Sambh...",
+                          ),
                         ),
                       ),
 
                       const SizedBox(width: 10),
 
                       Expanded(
-                        child: _locationCard(
-                          heading: "TO",
-                          title: "New Delhi",
-                          subtitle: "DEL – Indira Gandhi Intern...",
+                        child: InkWell(
+                          onTap: (){
+                            showModalBottomSheet(
+                              context: context,
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              builder: (context) => const TravellingFromBottomSheet(),
+                            );
+                          },
+                          child: _locationCard(
+                            heading: "TO",
+                            title: "New Delhi",
+                            subtitle: "DEL – Indira Gandhi Intern...",
+                          ),
                         ),
                       ),
                     ],
@@ -423,7 +445,7 @@ SizedBox(width: 3),
                   // ---------- Search button ----------
                   InkWell(
                     onTap: () {
-
+                     Navigator.push(context, MaterialPageRoute(builder: (context) => FlightResultsScreen()));
                     },
                     child: Container(
                       width: double.infinity,
