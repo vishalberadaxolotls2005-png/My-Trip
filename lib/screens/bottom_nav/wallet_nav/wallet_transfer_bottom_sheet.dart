@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 /// Call this to show the bottom sheet
 
@@ -40,13 +41,13 @@ class _WalletTransferBottomSheetState extends State<WalletTransferBottomSheet> {
                   size: 22,
                 ),
               ),
-              const Expanded(
+               Expanded(
                 child: Center(
                   child: Padding(
                     padding: EdgeInsets.only(right: 24), // balance the X icon
                     child: Text(
                       'Transfer',
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                         color: Color(0xFF1A1A2E),
@@ -75,18 +76,18 @@ class _WalletTransferBottomSheetState extends State<WalletTransferBottomSheet> {
               children: [
                 Text(
                   "Enter Amount",
-                  style: const TextStyle(
+                  style: GoogleFonts.poppins(
                     fontSize: 12,
                     color: Color(0xFF707070),
-                    fontWeight: FontWeight.w800,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
 
                 Row(
                   children: [
-                    const Text(
+                     Text(
                       '₹',
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                         fontSize: 18,
                         fontWeight: FontWeight.w800,
                         color: Color(0xFF1A1A2E),
@@ -101,17 +102,17 @@ class _WalletTransferBottomSheetState extends State<WalletTransferBottomSheet> {
                         ],
                         style: const TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.w800,
+                          fontWeight: FontWeight.w700,
                           color: Colors.black,
                         ),
-                        decoration: const InputDecoration(
+                        decoration:  InputDecoration(
                           isDense: true,
                           border: InputBorder.none,
                           focusedBorder: InputBorder.none,
                           enabledBorder: InputBorder.none,
                           contentPadding: EdgeInsets.zero,
                           hintText: '50,000',
-                          hintStyle: TextStyle(
+                          hintStyle: GoogleFonts.poppins(
                             fontSize: 22,
                             fontWeight: FontWeight.w800,
                             color: Colors.black,
@@ -129,7 +130,7 @@ class _WalletTransferBottomSheetState extends State<WalletTransferBottomSheet> {
           // Select Payment Method label
           Text(
             'Select Payment Method',
-            style: TextStyle(
+            style: GoogleFonts.poppins(
               fontSize: 14,
               color: Color(0xff707070),
               fontWeight: FontWeight.w500,
@@ -181,7 +182,7 @@ class _WalletTransferBottomSheetState extends State<WalletTransferBottomSheet> {
               child: Center(
                 child: Text(
                   "Pay",
-                  style: TextStyle(
+                  style: GoogleFonts.poppins(
                     color: Colors.white,
                     fontWeight: FontWeight.w500,
                     fontSize: 15,
@@ -254,7 +255,7 @@ class _PaymentOptionTile extends StatelessWidget {
             Expanded(
               child: Text(
                 label,
-                style: const TextStyle(
+                style:GoogleFonts.poppins(
                   fontSize: 15,
                   fontWeight: FontWeight.w500,
                   color: Color(0xFF1A1A2E),
@@ -293,34 +294,3 @@ class _PaymentOptionTile extends StatelessWidget {
   }
 }
 
-
-class _DashedDivider extends StatelessWidget {
-  const _DashedDivider();
-
-  @override
-  Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        const dashWidth = 5.0;
-        const dashGap = 4.0;
-        final dashCount =
-        (constraints.maxWidth / (dashWidth + dashGap)).floor();
-        return SizedBox(
-          height: 1,
-          child: Row(
-            children: List.generate(dashCount, (_) {
-              return Padding(
-                padding: const EdgeInsets.only(right: dashGap),
-                child: Container(
-                  width: dashWidth,
-                  height: 1,
-                  color: const Color(0xFFE0E0E8),
-                ),
-              );
-            }),
-          ),
-        );
-      },
-    );
-  }
-}

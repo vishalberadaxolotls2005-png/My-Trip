@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_trip/screens/homeScreen/category/flights/one_way_tab/flight_seats.dart';
 import 'package:my_trip/screens/homeScreen/category/flights/one_way_tab/review_booking.dart';
 
 import '../../hotels/review_booking_screen.dart';
@@ -26,6 +27,7 @@ class FlightDetailsScreen extends StatelessWidget {
         elevation: 0.5,
         leading: Icon(Icons.arrow_back_ios_new, color: Colors.black, size: 17),
         centerTitle: true,
+        surfaceTintColor: Colors.white,
         title: Text(
           'Flight Details',
           style: GoogleFonts.poppins(
@@ -51,7 +53,7 @@ class FlightDetailsScreen extends StatelessWidget {
             InkWell(
               onTap: (){
 
-Navigator.push(context, MaterialPageRoute(builder: (context)=>ReviewBookingFlightScreen()));
+Navigator.push(context, MaterialPageRoute(builder: (context)=>FlightSeats()));
               },
               child: Container(
                 width: double.infinity,

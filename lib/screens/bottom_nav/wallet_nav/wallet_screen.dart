@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:my_trip/screens/bottom_nav/wallet_nav/wallet_add_bottom_sheet.dart';
 import 'package:my_trip/screens/bottom_nav/wallet_nav/wallet_transfer_bottom_sheet.dart';
 
@@ -25,9 +26,9 @@ class WalletScreen extends StatelessWidget {
             size: 17,
           ),
         ),
-        title: const Text(
+        title:  Text(
           "Wallet",
-          style: TextStyle(
+          style: GoogleFonts.poppins(
             color: Colors.black,
             fontWeight: FontWeight.w600,
             fontSize: 16,
@@ -47,9 +48,9 @@ class WalletScreen extends StatelessWidget {
                   children: [
                     _buildBalanceCard(context),
                     const SizedBox(height: 15),
-                    const Text(
+                     Text(
                       'Transition History',
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                         fontSize: 18,
                         fontWeight: FontWeight.w800,
                         color: Color(0xFF1A1A2E),
@@ -88,13 +89,13 @@ class WalletScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            children: const [
+            children:  [
               Text(
                 'Total Balance',
-                style: TextStyle(
-                  fontSize: 13,
+                style: GoogleFonts.poppins(
+                  fontSize: 12,
                   color: Color(0xFF9B9BAB),
-                  fontWeight: FontWeight.w500,
+                  fontWeight: FontWeight.w400,
                 ),
               ),
               SizedBox(width: 6),
@@ -105,12 +106,12 @@ class WalletScreen extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 3),
-          const Text(
+          const SizedBox(height: 2),
+           Text(
             '₹6,983.00',
-            style: TextStyle(
+            style: GoogleFonts.poppins(
               fontSize: 25,
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.w600,
               color: Color(0xFF1A1A2E),
             ),
           ),
@@ -176,9 +177,9 @@ class WalletScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    child: const Text(
+                    child:  Text(
                       'Transfer',
-                      style: TextStyle(
+                      style: GoogleFonts.poppins(
                         color: Color(0xff7750D5),
                         fontSize: 15,
                         fontWeight: FontWeight.w700,
@@ -228,11 +229,11 @@ class WalletScreen extends StatelessWidget {
               )
             ),
             alignment: Alignment.center,
-            child: const Text(
+            child:  Text(
               '₹',
-              style: TextStyle(
+              style: GoogleFonts.poppins(
                 fontSize: 18,
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.w600,
                 color: Colors.black,
               ),
             ),
@@ -244,28 +245,28 @@ class WalletScreen extends StatelessWidget {
               children: [
                 Text(
                   subLabel,
-                  style: const TextStyle(
+                  style: GoogleFonts.poppins(
                     fontSize: 12,
                     color: Color(0xFF9B9BAB),
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
 
                 Text(
                   title,
-                  style: const TextStyle(
+                  style: GoogleFonts.poppins(
                     fontSize: 14,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w600,
                     color: Color(0xFF1A1A2E),
                   ),
                 ),
 
                 Text(
                   date,
-                  style: const TextStyle(
+                  style: GoogleFonts.poppins(
                     fontSize: 12,
                     color: Color(0xFF9B9BAB),
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
               ],
@@ -273,9 +274,9 @@ class WalletScreen extends StatelessWidget {
           ),
           Text(
             amount,
-            style: const TextStyle(
+            style: GoogleFonts.poppins(
               fontSize: 14,
-              fontWeight: FontWeight.w700,
+              fontWeight: FontWeight.w600,
               color: Color(0xFF1A1A2E),
             ),
           ),

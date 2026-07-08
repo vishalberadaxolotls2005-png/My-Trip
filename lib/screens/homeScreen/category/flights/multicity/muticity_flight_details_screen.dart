@@ -195,6 +195,7 @@ class _MuticityFlightDetailsScreenState extends State<MuticityFlightDetailsScree
         ),
         const SizedBox(width: 8),
         Container(
+          height: 48,
           padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
           decoration: BoxDecoration(
             color: Color(0xffEDE4F2),
@@ -481,9 +482,7 @@ class _FlightCard extends StatelessWidget {
 
 
 
-/// Route-leg selector row — replaces the date/price row.
-/// Shows one tab per multicity leg, e.g. "IXU → DEL", "DEL → PNQ".
-/// Tapping a tab selects that leg (e.g. to show its own flight results).
+
 class RouteLegSelectorRow extends StatefulWidget {
   const RouteLegSelectorRow({super.key});
 
@@ -492,6 +491,10 @@ class RouteLegSelectorRow extends StatefulWidget {
 }
 
 class _RouteLegSelectorRowState extends State<RouteLegSelectorRow> {
+  static const Color purple = Color(0xff7750D5);
+  static const Color tabSelectedBg = Color(0xFFF9F0FD);
+  static const Color blackText = Color(0xFF1B1B1B);
+
   int _selectedIndex = 0; // IXU -> DEL selected by default
 
   final List<_RouteLeg> _legs = const [
@@ -502,59 +505,60 @@ class _RouteLegSelectorRowState extends State<RouteLegSelectorRow> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      height: 40,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: const Color(0xffC7C7C7)),
+      ),
       child: Row(
         children: List.generate(_legs.length, (index) {
           final leg = _legs[index];
           final isSelected = index == _selectedIndex;
-          return GestureDetector(
-            onTap: () => setState(() => _selectedIndex = index),
-            child: Container(
-              height: 38,
-              padding: const EdgeInsets.symmetric(horizontal: 14),
-              decoration: BoxDecoration(
-                color: isSelected ? const Color(0xffF9F0FD) : Colors.white,
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(
-                  color: isSelected
-                      ? const Color(0xff7750D5)
-                      : const Color(0xFFC7C7C7),
-                  width: isSelected ? 1.2 : 1,
+
+          return Expanded(
+            child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () => setState(() => _selectedIndex = index),
+              child: AnimatedContainer(
+                duration: Duration.zero,
+                decoration: BoxDecoration(
+                  color: isSelected ? tabSelectedBg : Colors.transparent,
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: isSelected ? purple : Colors.transparent,
+                  ),
                 ),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    leg.from,
-                    style: GoogleFonts.poppins(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w700,
-                      color: isSelected
-                          ? const Color(0xff7750D5)
-                          : const Color(0xff1B1A1A),
-                    ),
+                child: Center(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        leg.from,
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: isSelected ? purple : blackText,
+                        ),
+                      ),
+                      const SizedBox(width: 13),
+                      Icon(
+                        Icons.arrow_forward,
+                        size: 14,
+                        color: isSelected ? purple : const Color(0xff8D8C8C),
+                      ),
+                      const SizedBox(width: 13),
+                      Text(
+                        leg.to,
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          color: isSelected ? purple : blackText,
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(width: 6),
-                  Icon(
-                    Icons.arrow_forward,
-                    size: 14,
-                    color: isSelected
-                        ? const Color(0xff7750D5)
-                        : const Color(0xff8D8C8C),
-                  ),
-                  const SizedBox(width: 6),
-                  Text(
-                    leg.to,
-                    style: GoogleFonts.poppins(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w700,
-                      color: isSelected
-                          ? const Color(0xff7750D5)
-                          : const Color(0xff1B1A1A),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
           );

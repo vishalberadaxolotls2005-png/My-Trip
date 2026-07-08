@@ -38,6 +38,7 @@ class ReviewBookingFlightScreen extends StatelessWidget {
         elevation: 0.5,
         leading: Icon(Icons.arrow_back_ios_new, color: Colors.black, size: 17),
         centerTitle: true,
+        surfaceTintColor: Colors.white,
         title: Text(
           'Review Booking',
           style: GoogleFonts.poppins(

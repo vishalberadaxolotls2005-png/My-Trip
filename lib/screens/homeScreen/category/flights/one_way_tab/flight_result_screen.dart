@@ -204,6 +204,7 @@ class _FlightResultsScreenState extends State<FlightResultsScreen> {
         ),
         const SizedBox(width: 8),
         Container(
+          height: 48,
           padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
           decoration: BoxDecoration(
             color: Color(0xffEDE4F2),
