@@ -466,7 +466,7 @@ maxLines: 1,
             const SizedBox(height: 15),
             InkWell(
               onTap: (){
-Navigator.push(context, MaterialPageRoute(builder: (context)=>FlightDetailsScreen()));
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>FlightDetailsScreen()));
 
               },
               child: Container(

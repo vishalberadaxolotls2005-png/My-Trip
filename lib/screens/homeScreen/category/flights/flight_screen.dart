@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_trip/screens/homeScreen/category/flights/one_way_tab/one_way_tab.dart';
 
+import 'multicity/muticity_tab.dart';
+
 class FlightScreen extends StatefulWidget {
 
 
@@ -96,6 +98,8 @@ class _FlightScreenState extends State<FlightScreen> {
               index: _selectedIndex,
               children:  [
                 OneWayTab(),
+                Container(),
+                MuticityTab()
 
               ],
             ),

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_trip/screens/homeScreen/category/flights/one_way_tab/review_booking.dart';
+
+import '../../hotels/review_booking_screen.dart';
 
 
 class FlightDetailsScreen extends StatelessWidget {
@@ -16,10 +20,11 @@ class FlightDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffF2F2F2),
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.5,
-        leading: const BackButton(color: Colors.black),
+        leading: Icon(Icons.arrow_back_ios_new, color: Colors.black, size: 17),
         centerTitle: true,
         title: Text(
           'Flight Details',
@@ -36,14 +41,43 @@ class FlightDetailsScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildFlightCard(),
-            const SizedBox(height: 20),
+            const SizedBox(height: 15),
             _buildBookingPoliciesSection(),
-            const SizedBox(height: 20),
+            const SizedBox(height: 15),
             _buildImportantInfoSection(),
-            const SizedBox(height: 20),
+            const SizedBox(height: 15),
             _buildTravellerDetailsSection(),
-            const SizedBox(height: 20),
-            _buildContinueButton(),
+            const SizedBox(height: 15),
+            InkWell(
+              onTap: (){
+
+Navigator.push(context, MaterialPageRoute(builder: (context)=>ReviewBookingFlightScreen()));
+              },
+              child: Container(
+                width: double.infinity,
+                height: 40,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(6),
+                  gradient:  LinearGradient(
+                    colors: [
+                      Color(0xff7750D5),
+                      Color(0xffB457EB),
+                      Color(0xffA751D8)
+                    ],
+                  ),
+                ),
+                child: Center(
+                  child: Text(
+                    "Continue",
+                    style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 15,
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -259,7 +293,7 @@ class FlightDetailsScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              _dashedDivider(),
+              _DashedDivider(),
               const SizedBox(height: 10),
               _checkRow('Cabin bag', '7 Kgs (1 piece only) / Adult'),
               const SizedBox(height: 10),
@@ -287,14 +321,14 @@ class FlightDetailsScreen extends StatelessWidget {
                     'Upgrade',
                     style: GoogleFonts.poppins(
                       fontSize: 13,
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w500,
                       color: purpleAccent,
                     ),
                   ),
                 ],
               ),
               const SizedBox(height: 10),
-              _dashedDivider(),
+              _DashedDivider(),
               const SizedBox(height: 10),
               _bulletText(
                 boldPart: 'Cancellation: ',
@@ -318,20 +352,21 @@ class FlightDetailsScreen extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Icon(Icons.check_circle, color: greenCheck, size: 18),
+        SvgPicture.asset("assets/images/completed_title.svg",height: 16,),
         const SizedBox(width: 8),
         Expanded(
-          child: Column(
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 title,
                 style: GoogleFonts.poppins(
-                  fontSize: 13,
+                  fontSize: 12,
                   fontWeight: FontWeight.w600,
                   color: darkText,
                 ),
               ),
+              SizedBox(width: 20),
               Text(
                 subtitle,
                 style: GoogleFonts.poppins(
@@ -349,32 +384,42 @@ class FlightDetailsScreen extends StatelessWidget {
   Widget _bulletText({required String boldPart, required String normalPart}) {
     return Padding(
       padding: const EdgeInsets.only(left: 4),
-      child: RichText(
-        text: TextSpan(
-          children: [
-            const TextSpan(
-              text: '•  ',
-              style: TextStyle(color: darkText),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start, // Aligns bullet with the top line
+        children: [
+          Text(
+            '•  ',
+            style: TextStyle(
+              color: darkText,
+              fontSize: 14, // Adjust size to match bullet preference
             ),
-            TextSpan(
-              text: boldPart,
-              style: GoogleFonts.poppins(
-                fontSize: 12.5,
-                fontWeight: FontWeight.w600,
-                color: darkText,
+          ),
+          Expanded(
+            child: RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: boldPart,
+                    style: GoogleFonts.poppins(
+                      fontSize: 12.5,
+                      fontWeight: FontWeight.w500,
+                      color: darkText,
+                    ),
+                  ),
+                  TextSpan(
+                    text: normalPart,
+                    style: GoogleFonts.poppins(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w400,
+                      color: labelGrey,
+                    ),
+                  ),
+                ],
               ),
             ),
-            TextSpan(
-              text: normalPart,
-              style: GoogleFonts.poppins(
-                fontSize: 12.5,
-                fontWeight: FontWeight.w400,
-                color: labelGrey,
-              ),
-            ),
-          ],
-        ),
-      ),
+          ),
+        ],
+      )
     );
   }
 
@@ -405,41 +450,37 @@ class FlightDetailsScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
-              _dashedDivider(),
+              _DashedDivider(),
               const SizedBox(height: 12),
               _warningRow(
                 title: 'Check travel guidelines and baggage information\nbelow:',
-                bullet:
-                'Carry on more than 1 check-in baggage and 1 hand\nbaggage per passenger. If violated, airline may levy\nextra charges.',
+                bullet: 'Carry on more than 1 check-in baggage and 1 hand\nbaggage per passenger. If violated, airline may levy\nextra charges.',
               ),
               const SizedBox(height: 12),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Icon(Icons.info, color: redIcon, size: 16),
+                  SvgPicture.asset("assets/images/alert.svg",height: 20,),
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
                       'Availability of Boarding Pass:',
                       style: GoogleFonts.poppins(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w600,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500,
                         color: darkText,
                       ),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 8),
-              Padding(
-                padding: const EdgeInsets.only(left: 24),
-                child: Text(
-                  'More View',
-                  style: GoogleFonts.poppins(
-                    fontSize: 13,
-                    fontWeight: FontWeight.w500,
-                    color: purpleAccent,
-                  ),
+              const SizedBox(height: 10),
+              Text(
+                'More View',
+                style: GoogleFonts.poppins(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                  color: purpleAccent,
                 ),
               ),
             ],
@@ -453,28 +494,44 @@ class FlightDetailsScreen extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Icon(Icons.info, color: redIcon, size: 16),
+       SvgPicture.asset("assets/images/alert.svg",height: 20,),
         const SizedBox(width: 8),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                title,
+                title.replaceAll('\n', ''),
                 style: GoogleFonts.poppins(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
                   color: darkText,
                 ),
               ),
               const SizedBox(height: 6),
-              Text(
-                '•  $bullet',
-                style: GoogleFonts.poppins(
-                  fontSize: 12.5,
-                  fontWeight: FontWeight.w400,
-                  color: labelGrey,
-                ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '•',
+                    style: GoogleFonts.poppins(
+                      fontSize: 12.5,
+                      fontWeight: FontWeight.w400,
+                      color: labelGrey,
+                    ),
+                  ),
+                  const SizedBox(width: 6),
+                  Expanded(
+                    child: Text(
+                      bullet.replaceAll('\n', ''),
+                      style: GoogleFonts.poppins(
+                        fontSize: 12.5,
+                        fontWeight: FontWeight.w400,
+                        color: labelGrey,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
@@ -542,21 +599,34 @@ class FlightDetailsScreen extends StatelessWidget {
   }
 
   Widget _inputField(String hint) {
-    return Container(
+    return SizedBox(
       height: 48,
-      padding: const EdgeInsets.symmetric(horizontal: 14),
-      decoration: BoxDecoration(
-        color: const Color(0xFFF5F5F7),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.grey.shade300),
-      ),
-      alignment: Alignment.centerLeft,
-      child: Text(
-        hint,
+      child: TextField(
         style: GoogleFonts.poppins(
           fontSize: 12,
-          fontWeight: FontWeight.w500,
-          color: labelGrey,
+          fontWeight: FontWeight.w600, // Matching your dropdown weight
+          color: darkText,
+        ),
+        decoration: InputDecoration(
+          hintText: hint,
+          hintStyle: GoogleFonts.poppins(
+            fontSize: 11,
+            fontWeight: FontWeight.w500,
+            color: Color(0xff707070),
+          ),
+          filled: true,
+          fillColor: const Color(0xFFF5F5F7),
+          contentPadding: const EdgeInsets.symmetric(horizontal: 14),
+          // Default Border
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: BorderSide(color:Color(0xffC7C7C7)),
+          ),
+          // Border when clicking/typing
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8),
+            borderSide: const BorderSide(color: purpleAccent, width: 1),
+          ),
         ),
       ),
     );
@@ -567,10 +637,10 @@ class FlightDetailsScreen extends StatelessWidget {
       height: 48,
       padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
-        color: const Color(0xFFF5F5F7),
+        color:  Color(0xffF6F6F6),
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.grey.shade300),
-      ),
+        border: Border.all(color:Color(0xffC7C7C7),
+      ),),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -579,7 +649,7 @@ class FlightDetailsScreen extends StatelessWidget {
             style: GoogleFonts.poppins(
               fontSize: 12,
               fontWeight: FontWeight.w600,
-              color: darkText,
+              color: Color(0xff707070),
             ),
           ),
           const Icon(Icons.keyboard_arrow_down, size: 18, color: labelGrey),
@@ -588,43 +658,12 @@ class FlightDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildContinueButton() {
-    return Container(
-      width: double.infinity,
-      height: 52,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        gradient: const LinearGradient(
-          colors: [indigoSecondary, purpleAccent],
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-        ),
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(10),
-          onTap: () {},
-          child: Center(
-            child: Text(
-              'Continue',
-              style: GoogleFonts.poppins(
-                color: Colors.white,
-                fontSize: 15,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 
   // ---------------- Shared helpers ----------------
   Widget _card({required Widget child}) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(horizontal: 14,vertical: 14),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(14),
@@ -640,29 +679,7 @@ class FlightDetailsScreen extends StatelessWidget {
     );
   }
 
-  Widget _dashedDivider() {
-    return SizedBox(
-      height: 1,
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          final dashWidth = 5.0;
-          final dashCount = (constraints.constrainWidth() / (dashWidth * 2)).floor();
-          return Flex(
-            direction: Axis.horizontal,
-            children: List.generate(dashCount, (_) {
-              return SizedBox(
-                width: dashWidth,
-                height: 1,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(color: Colors.grey.shade300),
-                ),
-              );
-            }),
-          ).paddedDashRow();
-        },
-      ),
-    );
-  }
+
 }
 
 extension on Flex {
@@ -671,6 +688,39 @@ extension on Flex {
       children: children
           .map((w) => Padding(padding: const EdgeInsets.only(right: 3), child: w))
           .toList(),
+    );
+  }
+}
+
+
+
+class _DashedDivider extends StatelessWidget {
+  const _DashedDivider();
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        const dashWidth = 5.0;
+        const dashGap = 4.0;
+        final dashCount =
+        (constraints.maxWidth / (dashWidth + dashGap)).floor();
+        return SizedBox(
+          height: 1,
+          child: Row(
+            children: List.generate(dashCount, (_) {
+              return Padding(
+                padding: const EdgeInsets.only(right: dashGap),
+                child: Container(
+                  width: dashWidth,
+                  height: 1,
+                  color: const Color(0xff8765DA),
+                ),
+              );
+            }),
+          ),
+        );
+      },
     );
   }
 }
